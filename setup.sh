@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# deps
+# multipath-tools is obviously needed, but should be installed by default.
+sudo apt install -y lsscsi open-iscsi tgt
+
 targetname="iqn.2016-11.foo.com:target.iscsi"
 cwd=$(pwd)
 testdir="/mnt/tgtmpathtest"
