@@ -13,6 +13,7 @@ maxpaths=4
 backfn="backingfile"
 expectwwid="60000000000000000e00000000010001"
 testdisk="/dev/disk/by-id/wwn-0x${expectwwid}"
+mpathmntpoint="/mnt/mpath_test"
 
 ### Setup mpath devices
 
@@ -56,3 +57,7 @@ dmsetup table
 
 echo "Test WWN should now point to DM"
 readlink "${testdisk}" | grep dm
+
+mkdir -p "${mpathmntpoint}"
+mkfs.vfat "${testdisk}"
+mount "${testdisk}" "${mpathmntpoint}"
